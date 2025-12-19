@@ -74,6 +74,18 @@ img {
   line-height: 1.6;
 }
 
+.sound-icon {
+  font-size: 44px;
+  animation: pulse 1.5s infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
 @keyframes fade {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -101,39 +113,14 @@ img {
 
 /* ===== AJUSTES PARA CELULAR ===== */
 @media (max-width: 768px) {
-
-  body {
-    font-size: 18px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  h2 {
-    font-size: 26px;
-  }
-
-  p {
-    font-size: 18px;
-    line-height: 1.7;
-  }
-
-  button {
-    font-size: 18px;
-    padding: 16px 40px;
-  }
-
-  .secret {
-    font-size: 19px;
-    line-height: 1.8;
-  }
-
-  img {
-    max-width: 320px;
-  }
+  body { font-size: 18px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  p { font-size: 18px; line-height: 1.7; }
+  button { font-size: 18px; padding: 16px 40px; }
+  .secret { font-size: 19px; line-height: 1.8; }
+  img { max-width: 320px; }
 }
-
 </style>
 </head>
 
@@ -146,8 +133,16 @@ img {
 <div class="section active" id="s1">
   <div class="box">
     <h1>Oi, minha Vida 💛</h1>
-    <p>Preparei algo especial pra você.<br>Abre com carinho.</p>
-    <button onclick="start()">Começar</button>
+
+    <div class="sound-icon">🔊</div>
+
+    <p>
+      Antes de começar,<br>
+      <strong>ligue o som</strong><br>
+      para ouvir a música que escolhi pra você.
+    </p>
+
+    <button onclick="start()">🔊 Ligar som e começar</button>
   </div>
 </div>
 
@@ -228,11 +223,6 @@ img {
           Obrigado pela paciência, pelo carinho, pelas risadas,
           pelas conversas, pelos sonhos compartilhados
           e pela família linda que estamos construindo juntos.<br><br>
-
-          Que esses 5 anos sejam apenas o começo de uma história longa,
-          cheia de saúde, união, amor e fé.
-          Que possamos envelhecer juntos, de mãos dadas,
-          vendo o Noah crescer e sempre escolhendo um ao outro.<br><br>
 
           <strong>Eu te amo mais do que palavras podem explicar.</strong><br>
           Obrigado por ser minha esposa, minha família e meu lar.<br><br>
