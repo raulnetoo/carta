@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nossa História 💛</title>
+<title>Nosso Dia Especial 💛</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
@@ -14,7 +14,7 @@ body {
   background: linear-gradient(180deg, #2f3e2e, #3f5f3a);
   color: #ffffff;
   text-align: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .section {
@@ -39,7 +39,6 @@ h1, h2 {
 }
 
 button {
-  margin-top: 25px;
   padding: 14px 34px;
   border-radius: 40px;
   border: none;
@@ -72,6 +71,7 @@ img {
   font-size: 17px;
   color: #fff3c4;
   text-align: left;
+  line-height: 1.6;
 }
 
 @keyframes fade {
@@ -79,18 +79,13 @@ img {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Botão andando */
+/* Botão fujão */
 #secretBtn {
-  position: relative;
-  animation: moveBtn 3s ease-in-out infinite alternate;
+  position: fixed;
+  z-index: 999;
 }
 
-@keyframes moveBtn {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(30px); }
-}
-
-/* CORAÇÕES */
+/* Corações finais */
 .heart {
   position: fixed;
   bottom: -10px;
@@ -103,6 +98,42 @@ img {
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-100vh); opacity: 0; }
 }
+
+/* ===== AJUSTES PARA CELULAR ===== */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 16px 40px;
+  }
+
+  .secret {
+    font-size: 19px;
+    line-height: 1.8;
+  }
+
+  img {
+    max-width: 320px;
+  }
+}
+
 </style>
 </head>
 
@@ -123,10 +154,10 @@ img {
 <!-- TELA 2 -->
 <div class="section" id="s2">
   <div class="box">
-    <h2>O Nosso Sim 💍</h2>
+    <h2>Nosso Dia Especial 💍</h2>
     <p>
       Em <strong>19/12/2020</strong>, eu disse sim para você, Vida.<br>
-      E escolhi o amor da minha vida.
+      E escolhi te amar todos os dias da minha vida.
     </p>
     <button onclick="next(2)">Continuar</button>
   </div>
@@ -135,7 +166,7 @@ img {
 <!-- TELA 3 -->
 <div class="section" id="s3">
   <div class="box">
-    <h2>Nosso dia especial📸</h2>
+    <h2>Nosso Dia Especial em Fotos 📸</h2>
     <div class="gallery">
       <img src="assets/img/foto1.jpg">
       <img src="assets/img/foto2.jpg">
@@ -166,7 +197,7 @@ img {
 
     <div id="beforeSecret">
       <h2>Para Você, Vida 💛</h2>
-      <p>Tem algo que quero te dizer…</p>
+      <p>Tem algo muito especial que quero te dizer…</p>
       <button id="secretBtn" onclick="reveal()">Mensagem secreta 💌</button>
     </div>
 
@@ -217,6 +248,8 @@ img {
 </div>
 
 <script>
+let btn, posX = 100, posY = 200, velX = 1.8, velY = 1.6, interval;
+
 function start() {
   document.getElementById('music').play();
   next(1);
@@ -225,9 +258,31 @@ function start() {
 function next(n) {
   document.getElementById('s' + n).classList.remove('active');
   document.getElementById('s' + (n + 1)).classList.add('active');
+
+  if (n + 1 === 5) {
+    setTimeout(startButtonBounce, 300);
+  }
+}
+
+function startButtonBounce() {
+  btn = document.getElementById('secretBtn');
+  interval = setInterval(() => {
+    const w = btn.offsetWidth;
+    const h = btn.offsetHeight;
+
+    posX += velX;
+    posY += velY;
+
+    if (posX + w >= window.innerWidth || posX <= 0) velX *= -1;
+    if (posY + h >= window.innerHeight || posY <= 0) velY *= -1;
+
+    btn.style.left = posX + 'px';
+    btn.style.top = posY + 'px';
+  }, 10);
 }
 
 function reveal() {
+  clearInterval(interval);
   document.getElementById('beforeSecret').style.display = 'none';
   document.getElementById('afterSecret').style.display = 'block';
 }
