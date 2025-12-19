@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nosso Dia Especial 💛</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+/* ===== BASE ===== */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(180deg, #2f3e2e, #3f5f3a);
   color: #ffffff;
   text-align: center;
-  overflow: hidden;
 }
 
 .section {
@@ -22,43 +22,47 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 30px 20px;
+  padding: 40px 22px;
 }
 
 .section.active {
   display: flex;
-  animation: fade 1.2s ease;
 }
 
 .box {
-  max-width: 90%;
+  max-width: 720px;
+  width: 100%;
 }
 
 h1, h2 {
   font-family: 'Playfair Display', serif;
+  margin-bottom: 16px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
 }
 
 button {
-  padding: 14px 34px;
+  margin-top: 30px;
+  padding: 18px 46px;
   border-radius: 40px;
   border: none;
   background: #f2c94c;
   color: #2f3e2e;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
 }
 
-button:active {
-  transform: scale(0.95);
-}
-
+/* ===== IMAGENS ===== */
 img {
   width: 100%;
-  max-width: 260px;
+  max-width: 320px;
   border-radius: 20px;
-  margin: 15px;
-  box-shadow: 0 0 20px rgba(63, 95, 58, 0.6);
+  margin: 16px;
+  box-shadow: 0 0 20px rgba(63,95,58,0.6);
 }
 
 .gallery {
@@ -67,59 +71,45 @@ img {
   justify-content: center;
 }
 
+/* ===== TEXTO SECRETO ===== */
 .secret {
-  font-size: 17px;
+  font-size: 20px;
+  line-height: 1.9;
   color: #fff3c4;
   text-align: left;
-  line-height: 1.6;
 }
 
+/* ===== SOM ===== */
 .sound-icon {
-  font-size: 44px;
-  animation: pulse 1.5s infinite;
+  font-size: 46px;
   margin-bottom: 10px;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.15); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.7; }
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Botão fujão */
-#secretBtn {
-  position: fixed;
-  z-index: 999;
-}
-
-/* Corações finais */
-.heart {
-  position: fixed;
-  bottom: -10px;
-  font-size: 22px;
-  animation: float 5s linear infinite;
-  color: #f2c94c;
-}
-
-@keyframes float {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-100vh); opacity: 0; }
-}
-
-/* ===== AJUSTES PARA CELULAR ===== */
+/* ===== CELULAR (FOCO TOTAL NA LEITURA) ===== */
 @media (max-width: 768px) {
-  body { font-size: 18px; }
-  h1 { font-size: 32px; }
-  h2 { font-size: 26px; }
-  p { font-size: 18px; line-height: 1.7; }
-  button { font-size: 18px; padding: 16px 40px; }
-  .secret { font-size: 19px; line-height: 1.8; }
-  img { max-width: 320px; }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+
+  .secret {
+    font-size: 22px;
+    line-height: 2;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 20px 50px;
+  }
 }
 </style>
 </head>
@@ -138,11 +128,11 @@ img {
 
     <p>
       Antes de começar,<br>
-      <strong>ligue o som</strong><br>
-      para ouvir a música que escolhi pra você.
+      ligue o som para ouvir a música<br>
+      que escolhi pra você.
     </p>
 
-    <button onclick="start()">🔊 Ligar som e começar</button>
+    <button onclick="start()">Ligar som e começar</button>
   </div>
 </div>
 
@@ -193,11 +183,11 @@ img {
     <div id="beforeSecret">
       <h2>Para Você, Vida 💛</h2>
       <p>Tem algo muito especial que quero te dizer…</p>
-      <button id="secretBtn" onclick="reveal()">Mensagem secreta 💌</button>
+      <button onclick="reveal()">Mensagem secreta 💌</button>
     </div>
 
     <div id="afterSecret" style="display:none;">
-      <div style="max-height:70vh; overflow-y:auto; padding:10px;">
+      <div style="max-height:75vh; overflow-y:auto;">
         <p class="secret">
           <strong>Minha vida,</strong><br><br>
 
@@ -219,11 +209,6 @@ img {
           Seu amor, seu cuidado e sua dedicação ao nosso filho me fazem ter
           ainda mais orgulho da mulher incrível que você é.<br><br>
 
-          Obrigado por ser minha companheira, minha amiga, meu amor.
-          Obrigado pela paciência, pelo carinho, pelas risadas,
-          pelas conversas, pelos sonhos compartilhados
-          e pela família linda que estamos construindo juntos.<br><br>
-
           <strong>Eu te amo mais do que palavras podem explicar.</strong><br>
           Obrigado por ser minha esposa, minha família e meu lar.<br><br>
 
@@ -238,8 +223,6 @@ img {
 </div>
 
 <script>
-let btn, posX = 100, posY = 200, velX = 1.8, velY = 1.6, interval;
-
 function start() {
   document.getElementById('music').play();
   next(1);
@@ -248,47 +231,34 @@ function start() {
 function next(n) {
   document.getElementById('s' + n).classList.remove('active');
   document.getElementById('s' + (n + 1)).classList.add('active');
-
-  if (n + 1 === 5) {
-    setTimeout(startButtonBounce, 300);
-  }
-}
-
-function startButtonBounce() {
-  btn = document.getElementById('secretBtn');
-  interval = setInterval(() => {
-    const w = btn.offsetWidth;
-    const h = btn.offsetHeight;
-
-    posX += velX;
-    posY += velY;
-
-    if (posX + w >= window.innerWidth || posX <= 0) velX *= -1;
-    if (posY + h >= window.innerHeight || posY <= 0) velY *= -1;
-
-    btn.style.left = posX + 'px';
-    btn.style.top = posY + 'px';
-  }, 10);
 }
 
 function reveal() {
-  clearInterval(interval);
   document.getElementById('beforeSecret').style.display = 'none';
   document.getElementById('afterSecret').style.display = 'block';
 }
 
 function final() {
   for (let i = 0; i < 40; i++) {
-    let heart = document.createElement('div');
-    heart.className = 'heart';
+    const heart = document.createElement('div');
     heart.innerHTML = '💛';
+    heart.style.position = 'fixed';
     heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    heart.style.bottom = '-10px';
+    heart.style.fontSize = '24px';
+    heart.style.animation = 'float 5s linear';
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
+    setTimeout(() => heart.remove(), 5000);
   }
 }
 </script>
+
+<style>
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
 
 </body>
 </html>
